@@ -329,8 +329,7 @@ function showTip(ev, s){
   tip.innerHTML = `<b>${s.name}</b>
     <div class="row"><span>${bed} bed</span><strong>${fmt(r)}/wk</strong></div>
     <div class="row"><span>vs you</span><strong style="color:${d<0?'var(--cheaper)':d>0?'var(--dearer)':'inherit'}">${d===0?'same':(d>0?'+':'−')+fmt(Math.abs(d))}</strong></div>
-    <div class="row"><span>to Central</span><strong>${s.commute.min} min</strong></div>
-    <div class="hint2">${s.highlights.slice(0,2).join(' · ')}</div>`;
+    <div class="row"><span>to Central</span><strong>${s.commute.min} min</strong></div>`;
   tip.hidden = false;
   const bx = wrap.getBoundingClientRect();
   let x = ev.clientX - bx.left + 14, y = ev.clientY - bx.top + 14;
@@ -408,7 +407,6 @@ function renderDetail(s){
   el.innerHTML = `
     <h2>${s.name} <span class="pc">${s.pc}</span>${s.home ? '<span class="chip" style="background:var(--home);color:#fff">you</span>' : ''}</h2>
     <p class="blurb">${s.blurb}</p>
-    <ul class="hl">${s.highlights.map(h => `<li>${h}</li>`).join('')}</ul>
     <div class="kpis">
       ${[1,2,3].map(b => `<div class="kpi ${b===bed?'on':''}"><div class="k">${b} bed</div><div class="v">${s.rent[b] ? fmt(s.rent[b]) : '—'}<small>/wk</small></div></div>`).join('')}
     </div>
